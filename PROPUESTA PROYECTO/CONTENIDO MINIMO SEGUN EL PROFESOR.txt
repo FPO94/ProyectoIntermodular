@@ -1,0 +1,36 @@
+Realizar un login
+Entrar con diferentes perfiles de usuario que vean la aplicación con opciones diferentes
+Conexión con bases de datos
+Front en Angular
+Back con algún framework
+Validar con algún tipo de captcha el registro de usuario
+Hacer login con sistemas externos, google, facebook, etc.
+Integrar pasarela de pago
+Enviar emails automatizados con alguna de las operaciones
+Desarrollar una API REST que pueda ser consumida por el front
+Internacionalizar la aplicación en al menos 2 idiomas, incluyendo localización de fechas, monedas, zona horaria, etc
+Encriptar los passwords de usuario con un sistema seguro
+Implementar un sistema de verificación de registro mediante correo de verificación
+Consumir api externa para enriquecer los datos de la aplicación
+Documentación de análisis y diseño.
+Realización de pruebas.
+Manual de usuario.
+Despliegue de una aplicación en un servidor
+Investigación de IAs para la realización del proyecto
+integrar la sostenibilidad en el desarrollo web, aplicando buenas prácticas de programación, optimización de recursos y diseño eficiente para reducir el impacto ambiental del software, en línea con los Objetivos de Desarrollo Sostenible de la Agenda 2030, especialmente aquellos relacionados con la acción por el clima (ODS 13), la innovación e infraestructura sostenible (ODS 9) y el consumo responsable (ODS 12)
+Gestión de registro y login de usuarios con token en la aplicación cliente
+Control de acceso a rutas y funcionalidades en base al tipo de usuario (logueado/no logueado) o controlando roles si se implementaran.
+Elaboración de un manual técnico sobre el despliegue de un proyecto.
+Redactar un manual que documente todo el proceso de despliegue de tu proyecto. El documento debe permitir reproducir el entorno desde cero en otro VPS e incluir los pasos de instalación, configuración y puesta en marcha. Se valorará la claridad, precisión y completitud de la documentación.
+Valoración de los condicionantes vinculados al despliegue de la aplicación en la nube frente a un despliegue local o con OVH, teniendo en cuenta requisitos legales, de seguridad, confidencialidad y coste (computación y transferencia) y requisitos tecnológicos y de integración o convivencia con otras infraestructuras.
+Despliegue de aplicación haciendo uso de sistema híbrido: combina despliegue en servidor local y uso de algunos servicios de nube pública (AWS S3, CloudFront, etc).
+Despliegue de aplicación haciendo uso de servicios de infraestructura en nube pública (emplea máquinas virtuales AWS EC2, Google Compute Engine o Azure Virtual Machines como servidores para el despliegue).
+Despliegue de aplicación en la nube mediante contenedores (PaaS) con característica de escalado dinámico e integración CI/CD (despliegue e integración continuas). En este caso se hace uso de al menos uno de los siguientes servicios: AWS Elastic Beanstalk, Azure App Service o Kubernetes en la nube (EKS, GKE, AKS).
+Despliegue de aplicación diseñada para servicios nativos de nube con características de alta disponibilidad y escalado automático mediante el empleo de AWS Lambda o equivalentes (Azure Functions o Google Cloud Functions) y BBDD serverless (Aurora Serverless, DynamoDB, BigQuery o Azure SQL Database Serverless). En este caso, además de realizar el despliegue será necesario valorar la estimación de costes ante una progresión de crecimiento en el servicio.
+Despliegue en VPS utilizando Docker Compose. Realizar el despliegue completo de un proyecto web en un servidor VPS (por ejemplo, con Debian 12 o similar) empleando Docker Compose, integrando los distintos servicios de la aplicación (frontend, backend y base de datos) en contenedores, definiendo correctamente las dependencias, puertos, redes y volúmenes necesarios para garantizar su funcionamiento conjunto.
+Despliegue en un VPS de una aplicación Node.js con Apache y Passenger, sirviendo también un frontend Angular.
+Configura Apache para servir el frontend desde el DocumentRoot y publicar la API en la ruta /api, asegurando que las rutas del frontend redirijan a index.html para evitar errores 404 en la navegación interna.
+Despliegue en VPS de una aplicación Node.js con Nginx como proxy inverso. Configurar un servidor Nginx en un VPS Linux para actuar como proxy inverso hacia una API Node.js que se ejecuta en el puerto 3000.
+Haz que Nginx sirva el frontend desde el DocumentRoot y redirija las peticiones a la API a través de una ruta específica, por ejemplo, /api.
+Diseño de web responsive
+Utilizar algún framework de diseño como Bootstrap, Tailwind o similar
