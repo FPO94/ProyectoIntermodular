@@ -253,6 +253,8 @@ Los prototipos seguirán un diseño sencillo, intuitivo y adaptable a distintos 
 
 ![Figura 5. Prototipos de las principales pantallas de EduHub](img/prototipo.png)
 
+Prototipo interactivo disponible en: [Figma](https://www.figma.com/design/HE9WGQ9JBtLq9CoE3jzHY8/PROTOTIPO-APLICACION?m=auto&t=qCZRHrYy6TfdSd8q-1)
+
 ### 4.4. Flujo de navegación
 
 La navegación de EduHub estará organizada en función de los tres perfiles de usuario: administrador, profesor y alumno.
