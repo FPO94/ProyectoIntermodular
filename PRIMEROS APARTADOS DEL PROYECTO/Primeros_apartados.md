@@ -77,15 +77,15 @@ EduHub comparte con estas plataformas funcionalidades como la gestión de tareas
 
 ### 2.2. Problematica identificada
 
-Aunque existen numerosas herramientas digitales para la enseñanza, la información académica puede encontrarse distribuida entre diferentes plataformas, dificultando su organización y seguimiento. Esto puede generar confusiones sobre las fechas de entrega, el estado de las actividades y las calificaciones. Además, la gestión de asignaturas, grupos y usuarios requiere mantener la información actualizada y garantizar que cada persona acceda únicamente a los datos que le corresponden.
+Aunque existen plataformas consolidadas como Moodle, Google Classroom y Microsoft Teams para Educación, estas ofrecen soluciones de carácter general que pueden incluir funcionalidades y opciones de configuración que excedan las necesidades de determinados centros educativos. En estos casos, puede resultar interesante disponer de una herramienta más acotada, cuya estructura y funcionalidades respondan directamente a las necesidades organizativas del centro.
 
-EduHub pretende abordar estas dificultades mediante una aplicación que centralice la organización académica, la publicación de tareas, la recepción de entregas y la consulta de calificaciones. De esta manera, los administradores podrán gestionar la estructura del centro, los profesores realizar un seguimiento de las actividades y los alumnos consultar sus trabajos pendientes y resultados académicos desde un mismo entorno.
+El proyecto EduHub plantea el desarrollo de una aplicación web propia, orientada inicialmente a un único centro educativo, que integre en un mismo entorno la gestión de usuarios, asignaturas, grupos, actividades, entregas y calificaciones. La aplicación contará con diferentes roles y permisos para adaptar el acceso y las funcionalidades a las responsabilidades de administradores, profesores y alumnos.
 
 ### 2.3. Motivacion
 
-La elección de EduHub como proyecto intermodular surge del interés por desarrollar una aplicación web completa que nos permita aplicar los conocimientos adquiridos durante el ciclo de Desarrollo de Aplicaciones Web. Hemos elegido el ámbito educativo porque ofrece la posibilidad de trabajar con diferentes tipos de usuarios, gestionar información relacionada y desarrollar funcionalidades que abarcan tanto el frontend como el backend y la base de datos.
+La elección de EduHub surge del interés por desarrollar una solución que permita centralizar la gestión académica de un centro educativo en una aplicación adaptada a sus necesidades organizativas. Frente a plataformas generalistas que ofrecen un amplio abanico de funcionalidades, proponemos desarrollar una herramienta más específica, con una estructura de usuarios, asignaturas, grupos y actividades ajustada al contexto de un único centro.
 
-Además, el proyecto nos permitirá trabajar con tecnologías como Angular, NestJS y PostgreSQL, integrar servicios externos y experimentar con diferentes alternativas de despliegue. Al ser un equipo de seis integrantes, también supone una oportunidad para aprender a distribuir tareas, coordinar el desarrollo y utilizar herramientas de colaboración y control de versiones, acercándonos a la forma de trabajo de un proyecto de software real.
+Asimismo, el proyecto nos permitirá explorar la integración de diferentes servicios externos y alternativas de despliegue, así como trabajar con tecnologías actuales como Angular, NestJS y PostgreSQL. Esto nos permitirá abordar el desarrollo de una solución completa y estudiar distintas posibilidades tecnológicas para su implementación.
 
 ## 3. Análisis
 
@@ -260,12 +260,6 @@ Prototipo interactivo disponible en: [Figma](https://www.figma.com/design/HE9WGQ
 La navegación de EduHub estará organizada en función de los tres perfiles de usuario: administrador, profesor y alumno.
 
 Tras iniciar sesión, cada usuario accederá a un panel principal adaptado a su rol, desde el que podrá consultar las secciones y funcionalidades correspondientes.
-
-| **Usuario**       | **Navegación principal**                                                           |
-|-------------------|------------------------------------------------------------------------------------|
-| **Administrador** | Panel principal → Usuarios, Asignaturas, Grupos, Matrículas, Contratación y Pagos. |
-| **Profesor**      | Panel principal → Mis grupos → Tareas → Entregas → Calificaciones.                 |
-| **Alumno**        | Panel principal → Mis grupos → Tareas → Entregas → Calificaciones.                 |
 
 Todos los usuarios podrán acceder a su perfil para modificar sus preferencias personales y cerrar sesión.
 
