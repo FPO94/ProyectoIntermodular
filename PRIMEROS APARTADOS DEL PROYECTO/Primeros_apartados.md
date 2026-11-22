@@ -1,5 +1,5 @@
 # Primeros apartados
-## 1. Introduccion
+## 1. Introducción
 
 ### 1.1 Objetivo del proyecto:
 
@@ -75,13 +75,13 @@ Actualmente, existen diferentes plataformas digitales que facilitan la gestión 
 
 EduHub comparte con estas plataformas funcionalidades como la gestión de tareas, entregas y calificaciones, pero se centra en desarrollar una solución más reducida, orientada inicialmente a un único centro educativo. Además de las funciones académicas, el proyecto contempla la integración de servicios externos y el despliegue de la aplicación en diferentes infraestructuras, permitiendo aplicar y evaluar distintas tecnologías durante su desarrollo.
 
-### 2.2. Problematica identificada
+### 2.2. Problemática identificada
 
 Aunque existen plataformas consolidadas como Moodle, Google Classroom y Microsoft Teams para Educación, estas ofrecen soluciones de carácter general que pueden incluir funcionalidades y opciones de configuración que excedan las necesidades de determinados centros educativos. En estos casos, puede resultar interesante disponer de una herramienta más acotada, cuya estructura y funcionalidades respondan directamente a las necesidades organizativas del centro.
 
 El proyecto EduHub plantea el desarrollo de una aplicación web propia, orientada inicialmente a un único centro educativo, que integre en un mismo entorno la gestión de usuarios, asignaturas, grupos, actividades, entregas y calificaciones. La aplicación contará con diferentes roles y permisos para adaptar el acceso y las funcionalidades a las responsabilidades de administradores, profesores y alumnos.
 
-### 2.3. Motivacion
+### 2.3. Motivación
 
 La elección de EduHub surge del interés por desarrollar una solución que permita centralizar la gestión académica de un centro educativo en una aplicación adaptada a sus necesidades organizativas. Frente a plataformas generalistas que ofrecen un amplio abanico de funcionalidades, proponemos desarrollar una herramienta más específica, con una estructura de usuarios, asignaturas, grupos y actividades ajustada al contexto de un único centro.
 
