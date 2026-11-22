@@ -41,6 +41,7 @@ Una vez completada la primera versión, se podrán incorporar funcionalidades co
 
 Se contempla la posibilidad de ampliar EduHub para gestionar varios centros educativos, incorporar una biblioteca digital, permitir el acceso de las familias y añadir herramientas de gestión económica y de personal.
 
+**Ampliación opcional**
 También se investigará el uso de inteligencia artificial y su posible integración mediante un generador de actividades o un asistente de dudas, siempre que el tiempo disponible lo permita.
 
 **Limitaciones**
@@ -176,19 +177,20 @@ El administrador se encarga de la organización académica de la plataforma. Pue
 
 El profesor puede consultar sus grupos, crear tareas, revisar las entregas y asignar calificaciones. Por su parte, el alumno puede consultar las tareas de sus grupos, entregar o sustituir trabajos antes de la fecha límite y consultar sus notas.
 
-Ambos perfiles disponen también de funcionalidades comunes, como el registro, el inicio y cierre de sesión y la configuración de preferencias personales.
+Ambos perfiles disponen también de funcionalidades comunes, como el inicio y cierre de sesión y la configuración de preferencias personales.
 
 ![Figura 2. Casos de uso del profesor y del alumno](img/casos-uso-profesor-alumno.png)
 
 ### 3.4. Descripción de actores
 
-En EduHub se identifican tres tipos de usuarios, cada uno con funciones y permisos específicos dentro de la plataforma.
+En EduHub se identifican tres tipos de usuarios autenticados, cada uno con funciones y permisos específicos dentro de la plataforma. Los visitantes no autenticados podrán crear una cuenta.
 
 | **Actor**         | **Descripción**                                                                                                | **Funciones principales**                                                                                    |
 |-------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
 | **Administrador** | Responsable de la configuración y organización académica de la plataforma.                                     | Gestionar usuarios, asignaturas, grupos, matrículas, asignaciones de profesores y pagos.                     |
 | **Profesor**      | Usuario encargado de gestionar las actividades académicas de los grupos que tiene asignados.                   | Crear tareas, consultar y descargar entregas, realizar el seguimiento del alumnado y asignar calificaciones. |
 | **Alumno**        | Usuario matriculado en uno o varios grupos que utiliza la plataforma para realizar sus actividades académicas. | Consultar tareas, entregar trabajos, sustituir archivos antes de la fecha límite y consultar calificaciones. |
+| **Visitante**     | No dispone de cuenta en la aplicación. | Registrarse como alumno |
 
 Los tres actores pueden iniciar y cerrar sesión, configurar sus preferencias personales y acceder únicamente a las funcionalidades correspondientes a su rol.
 
