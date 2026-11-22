@@ -225,17 +225,17 @@ De finales de noviembre de 2026 a junio de 2027. Las pruebas y la documentación
 
 | Fase                               | Nov | Dic | Ene | Feb | Mar | Abr | May | Jun | Resultado                                                               |
 | ---------------------------------- | --- | --- | --- | --- | --- | --- | --- | --- | ----------------------------------------------------------------------- |
-| 1\. Análisis y diseño              |     |     |     |     |     |     |     |     | Requisitos, casos de uso, modelo de datos, prototipos y API             |
-| 2\. Base técnica                   |     |     |     |     |     |     |     |     | Repositorio, Docker Compose, CI e i18n                                  |
-| 3\. M1 Usuarios y seguridad        |     |     |     |     |     |     |     |     | Hito 1: acceso completo desplegado en el VPS                            |
-| 4\. M2 Organización académica      |     |     |     |     |     |     |     |     | Asignaturas, grupos y matrícula                                         |
-| 5\. M3 Tareas y calificaciones     |     |     |     |     |     |     |     |     | Hito 2: ciclo completo de una tarea                                     |
-| 6\. M4 Contratación y pagos        |     |     |     |     |     |     |     |     | Hito 3 (finales de abril): funcionalidades P1 completas                 |
-| 7\. Despliegues en VPS             |     |     |     |     |     |     |     |     | Docker Compose con Nginx (enero) y Apache con Passenger (febrero-marzo) |
-| 8\. Despliegues cloud y valoración |     |     |     |     |     |     |     |     | Híbrido, PaaS con CI/CD, serverless, estimación de costes y comparación |
-| 9\. Pruebas, P2 y documentación    |     |     |     |     |     |     |     |     | Hito 4 (finales de mayo): todo el P1 desplegado, probado y documentado  |
-| 10\. IA (opcional)                 |     |     |     |     |     |     |     |     | Solo al final, si queda tiempo                                          |
-| 11\. Entrega y presentación        |     |     |     |     |     |     |     |     | Corrección final y defensa                                              |
+| 1\. Análisis y diseño              | ■   | ■   |     |     |     |     |     |     | Requisitos, casos de uso, modelo de datos, prototipos y API             |
+| 2\. Base técnica                   |     | ■   |     |     |     |     |     |     | Repositorio, Docker Compose, CI e i18n                                  |
+| 3\. M1 Usuarios y seguridad        |     |     | ■   |     |     |     |     |     | Hito 1: acceso completo desplegado en el VPS                            |
+| 4\. M2 Organización académica      |     |     |     | ■   |     |     |     |     | Asignaturas, grupos y matrícula                                         |
+| 5\. M3 Tareas y calificaciones     |     |     |     | □   | ■   |     |     |     | Hito 2: ciclo completo de una tarea                                     |
+| 6\. M4 Contratación y pagos        |     |     |     |     | □   | ■   |     |     | Hito 3 (finales de abril): funcionalidades P1 completas                 |
+| 7\. Despliegues en VPS             |     |     | ■   | ■   | ■   |     |     |     | Docker Compose con Nginx (enero) y Apache con Passenger (febrero-marzo) |
+| 8\. Despliegues cloud y valoración |     |     |     |     | □   | ■   | ■   |     | Híbrido, PaaS con CI/CD, serverless, estimación de costes y comparación |
+| 9\. Pruebas, P2 y documentación    |     |     | □   | □   | □   | □   | ■   |     | Hito 4 (finales de mayo): todo el P1 desplegado, probado y documentado  |
+| 10\. IA (opcional)                 |     |     |     |     |     |     |     | □   | Solo al final, si queda tiempo                                          |
+| 11\. Entrega y presentación        |     |     |     |     |     |     |     | ■   | Corrección final y defensa                                              |
 
 Color oscuro: dedicación principal. Color claro: inicio o trabajo parcial. Las vacaciones de Navidad y Semana Santa sirven de margen para recuperar retrasos.
 
