@@ -1,0 +1,152 @@
+@startuml modelo-entidad-relacion
+' EduHub - Figura 3. Diagrama entidad-relación (PostgreSQL)
+hide circle
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FFFDF5
+  BorderColor #2E5E4E
+  HeaderBackgroundColor #2E5E4E
+}
+
+entity "ROL" as rol {
+  * <b>id_rol</b> : serial <<PK>>
+  --
+  * nombre : varchar <<UNIQUE>>
+  descripcion : varchar
+}
+
+entity "USUARIO" as usuario {
+  * <b>id_usuario</b> : uuid <<PK>>
+  --
+  * id_rol : int <<FK>>
+  * nombre : varchar
+  * apellidos : varchar
+  * email : varchar <<UNIQUE>>
+  password_hash : varchar <<NULL si solo Google>>
+  google_id : varchar <<UNIQUE, NULL>>
+  * email_verificado : boolean
+  * idioma : varchar (es / en)
+  * zona_horaria : varchar
+  * moneda_preferida : char(3) (EUR / USD / GBP)
+  * estado : varchar
+  * fecha_registro : timestamptz
+}
+
+entity "TOKEN_VERIFICACION" as token {
+  * <b>id_token</b> : uuid <<PK>>
+  --
+  * id_usuario : uuid <<FK>>
+  * token_hash : varchar <<UNIQUE>>
+  * fecha_expiracion : timestamptz
+  fecha_uso : timestamptz
+}
+
+entity "ASIGNATURA" as asignatura {
+  * <b>id_asignatura</b> : serial <<PK>>
+  --
+  * nombre : varchar
+  descripcion : text
+  creditos : int
+}
+
+entity "GRUPO" as grupo {
+  * <b>id_grupo</b> : serial <<PK>>
+  --
+  * id_asignatura : int <<FK>>
+  * nombre : varchar
+  curso : varchar
+  periodo : varchar
+}
+
+entity "PROFESOR_GRUPO" as profgrupo {
+  * <b>id_profesor</b> : uuid <<PK, FK>>
+  * <b>id_grupo</b> : int <<PK, FK>>
+  --
+  * fecha_asignacion : timestamptz
+}
+
+entity "MATRICULA" as matricula {
+  * <b>id_alumno</b> : uuid <<PK, FK>>
+  * <b>id_grupo</b> : int <<PK, FK>>
+  --
+  * fecha_matricula : timestamptz
+  * estado : varchar (activa / baja)
+}
+
+entity "TAREA" as tarea {
+  * <b>id_tarea</b> : serial <<PK>>
+  --
+  * id_grupo : int <<FK>>
+  * id_profesor : uuid <<FK>>
+  * titulo : varchar
+  * enunciado : text
+  * fecha_publicacion : timestamptz
+  * fecha_limite : timestamptz (UTC)
+}
+
+entity "ENTREGA" as entrega {
+  * <b>id_entrega</b> : serial <<PK>>
+  --
+  * id_tarea : int <<FK>>
+  * id_alumno : uuid <<FK>>
+  * nombre_archivo : varchar
+  * ruta_archivo : varchar (disco o S3)
+  * tipo_mime : varchar (PDF / imagen / ZIP)
+  * tamano_bytes : int (<= 10 MB)
+  * fecha_entrega : timestamptz
+  <<UNIQUE (id_tarea, id_alumno)>>
+}
+
+entity "CALIFICACION" as calificacion {
+  * <b>id_calificacion</b> : serial <<PK>>
+  --
+  * id_entrega : int <<FK, UNIQUE>>
+  * nota : numeric(4,2) (0 - 10)
+  * fecha_calificacion : timestamptz
+}
+
+entity "CONTRATACION" as contratacion {
+  * <b>id_contratacion</b> : serial <<PK>>
+  --
+  * id_administrador : uuid <<FK>>
+  * servicio : varchar
+  * importe_eur : numeric(10,2)
+  * estado : varchar (pendiente / activa)
+  * fecha_creacion : timestamptz
+}
+
+entity "TRANSACCION" as transaccion {
+  * <b>id_transaccion</b> : serial <<PK>>
+  --
+  * id_contratacion : int <<FK>>
+  * stripe_session_id : varchar <<UNIQUE>>
+  * importe : numeric(10,2)
+  * moneda : char(3)
+  * estado : varchar (pendiente / pagada / fallida)
+  * fecha_creacion : timestamptz
+  fecha_pago : timestamptz
+}
+
+entity "TIPO_CAMBIO" as cambio {
+  * <b>moneda</b> : char(3) <<PK>>
+  * <b>fecha</b> : date <<PK>>
+  --
+  * tasa_desde_eur : numeric(12,6)
+}
+
+' Relaciones (notación pata de gallo)
+rol ||--o{ usuario : tiene
+usuario ||--o{ token : recibe
+asignatura ||--o{ grupo : contiene
+usuario ||--o{ profgrupo : "imparte (profesor)"
+grupo ||--o{ profgrupo : tiene
+usuario ||--o{ matricula : "se matricula (alumno)"
+grupo ||--o{ matricula : tiene
+grupo ||--o{ tarea : contiene
+usuario ||--o{ tarea : "crea (profesor)"
+tarea ||--o{ entrega : recibe
+usuario ||--o{ entrega : "realiza (alumno)"
+entrega ||--o| calificacion : tiene
+usuario ||--o{ contratacion : "contrata (admin)"
+contratacion ||--o{ transaccion : genera
+@enduml

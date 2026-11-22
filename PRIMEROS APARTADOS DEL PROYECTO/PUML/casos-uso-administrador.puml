@@ -1,0 +1,61 @@
+@startuml casos-uso-administrador
+' EduHub - Figura 1. Casos de uso del administrador
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #E3F2FD
+  BorderColor #1565C0
+}
+
+actor "Administrador" as Admin
+actor "Google" as Google <<sistema externo>>
+actor "Stripe" as Stripe <<sistema externo>>
+actor "Frankfurter\n(API de divisas)" as Frankfurter <<sistema externo>>
+
+rectangle "EduHub" {
+  ' Sesión y perfil
+  usecase "Iniciar sesión" as UC_Login
+  usecase "Iniciar sesión\ncon Google" as UC_Google
+  usecase "Cerrar sesión" as UC_Logout
+  usecase "Configurar preferencias\ndel perfil" as UC_Perfil
+
+  ' Organización académica
+  usecase "Gestionar roles\nde usuarios" as UC_Roles
+  usecase "Gestionar asignaturas" as UC_Asig
+  usecase "Gestionar grupos" as UC_Grupos
+  usecase "Asignar profesores\na grupos" as UC_Prof
+  usecase "Matricular y dar de\nbaja alumnos" as UC_Matr
+
+  ' Contratación y pagos
+  usecase "Consultar importes" as UC_Importes
+  usecase "Convertir divisas" as UC_Divisas
+  usecase "Realizar pago con\nStripe Checkout" as UC_Pago
+  usecase "Consultar estado de\nlas transacciones" as UC_Trans
+}
+
+Admin --> UC_Login
+Admin --> UC_Logout
+Admin --> UC_Perfil
+Admin --> UC_Roles
+Admin --> UC_Asig
+Admin --> UC_Grupos
+Admin --> UC_Prof
+Admin --> UC_Matr
+Admin --> UC_Importes
+Admin --> UC_Pago
+Admin --> UC_Trans
+
+' extend: la flecha va del caso que extiende al caso base
+UC_Google .> UC_Login : <<extend>>
+UC_Importes .> UC_Divisas : <<include>>
+
+UC_Google --> Google
+UC_Divisas --> Frankfurter
+UC_Pago --> Stripe
+
+note bottom of Admin
+  La cuenta de administrador se crea
+  al instalar la aplicación (no se registra).
+end note
+@enduml

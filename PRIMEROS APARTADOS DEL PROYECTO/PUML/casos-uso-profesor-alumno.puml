@@ -1,0 +1,66 @@
+@startuml casos-uso-profesor-alumno
+' EduHub - Figura 2. Casos de uso del profesor y del alumno
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Visitante" as Visitante
+actor "Usuario autenticado" as Usuario
+actor "Profesor" as Profesor
+actor "Alumno" as Alumno
+actor "Google" as Google <<sistema externo>>
+
+' Generalización: profesor y alumno heredan los casos comunes
+Profesor -up-|> Usuario
+Alumno -up-|> Usuario
+
+rectangle "EduHub" {
+  ' Comunes
+  usecase "Registrarse" as UC_Reg #F3E5F5
+  usecase "Verificar correo" as UC_Verif #F3E5F5
+  usecase "Iniciar sesión" as UC_Login #F3E5F5
+  usecase "Iniciar sesión\ncon Google" as UC_Google #F3E5F5
+  usecase "Cerrar sesión" as UC_Logout #F3E5F5
+  usecase "Configurar preferencias\ndel perfil" as UC_Perfil #F3E5F5
+
+  ' Profesor
+  usecase "Consultar grupos\nasignados" as UC_PGrupos #E3F2FD
+  usecase "Crear tareas" as UC_Crear #E3F2FD
+  usecase "Consultar entregas" as UC_PEntregas #E3F2FD
+  usecase "Descargar trabajos" as UC_Descargar #E3F2FD
+  usecase "Calificar tareas" as UC_Calificar #E3F2FD
+
+  ' Alumno
+  usecase "Consultar grupos" as UC_AGrupos #E8F5E9
+  usecase "Consultar tareas" as UC_ATareas #E8F5E9
+  usecase "Entregar trabajos" as UC_Entregar #E8F5E9
+  usecase "Sustituir archivo\n(antes de la fecha límite)" as UC_Sustituir #E8F5E9
+  usecase "Consultar calificaciones" as UC_ANotas #E8F5E9
+}
+
+Visitante --> UC_Reg
+UC_Reg .> UC_Verif : <<include>>
+
+Usuario --> UC_Login
+Usuario --> UC_Logout
+Usuario --> UC_Perfil
+UC_Google .> UC_Login : <<extend>>
+UC_Google --> Google
+
+Profesor --> UC_PGrupos
+Profesor --> UC_Crear
+Profesor --> UC_PEntregas
+Profesor --> UC_Calificar
+UC_Descargar .> UC_PEntregas : <<extend>>
+
+Alumno --> UC_AGrupos
+Alumno --> UC_ATareas
+Alumno --> UC_Entregar
+Alumno --> UC_ANotas
+UC_Sustituir .> UC_Entregar : <<extend>>
+
+note bottom of Visitante
+  Las cuentas nuevas se crean con el rol de alumno;
+  el administrador asigna el rol de profesor.
+end note
+@enduml
