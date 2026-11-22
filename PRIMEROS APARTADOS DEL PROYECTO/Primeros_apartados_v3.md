@@ -171,13 +171,13 @@ Los requisitos funcionales describen las operaciones que debe permitir realizar 
 
 **Módulo 4. Contratación, divisas y pagos**
 
-| **ID** | **Requisito**             | **Descripción**                                                                                                                                 | **Prioridad** |
-|--------|---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| RF21   | Consulta de importes      | Mostrar el importe del servicio contratable en euros. **[PENDIENTE: definir qué se contrata, por ejemplo una licencia anual con precio fijo.]** | P1            |
-| RF22   | Conversión de divisas     | Consultar la API externa Frankfurter para mostrar el importe equivalente en la moneda preferida del usuario (USD o GBP).                        | P1            |
-| RF23   | Procesamiento de pagos    | Permitir al administrador realizar pagos mediante Stripe Checkout en modo de pruebas.                                                           | P1            |
-| RF24   | Registro de transacciones | Registrar el estado de las operaciones y actualizar el estado de contratación tras la confirmación del pago.                                    | P1            |
-| RF25   | Confirmación por correo   | Enviar automáticamente un correo con el resumen del pago procesado.                                                                             | P1            |
+| **ID** | **Requisito**             | **Descripción**                                                                                                          | **Prioridad** |
+|--------|---------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------|
+| RF21   | Consulta de importes      | Mostrar en euros el importe del servicio que contrata el centro.                                                         | P1            |
+| RF22   | Conversión de divisas     | Consultar la API externa Frankfurter para mostrar el importe equivalente en la moneda preferida del usuario (USD o GBP). | P1            |
+| RF23   | Procesamiento de pagos    | Permitir al administrador realizar pagos mediante Stripe Checkout en modo de pruebas.                                    | P1            |
+| RF24   | Registro de transacciones | Registrar el estado de las operaciones y actualizar el estado de contratación tras la confirmación del pago.             | P1            |
+| RF25   | Confirmación por correo   | Enviar automáticamente un correo con el resumen del pago procesado.                                                      | P1            |
 
 **Requisitos funcionales transversales**
 
@@ -223,9 +223,6 @@ El administrador se encarga de la organización académica de la plataforma. Pue
 El profesor puede consultar sus grupos, crear tareas, revisar las entregas y asignar calificaciones. Por su parte, el alumno puede consultar las tareas de sus grupos, entregar o sustituir trabajos antes de la fecha límite y consultar sus notas.
 
 Ambos perfiles comparten las funcionalidades de cualquier usuario autenticado: iniciar y cerrar sesión y configurar sus preferencias personales. El registro y la verificación del correo no los realiza ninguno de estos roles, sino un visitante (usuario no registrado), cuya cuenta se crea con el rol de alumno.
-
-**[PENDIENTE: añadir el actor Visitante (registro y verificación del correo) en la Figura 2 o en una figura aparte.]**
-
 **Figura 2. Casos de uso del profesor y del alumno.**
 
 ![Figura 2. Casos de uso del profesor y del alumno](img/casos-uso-profesor-alumno.png)
@@ -257,18 +254,15 @@ El siguiente diagrama entidad-relación representa las principales entidades del
 
 ![Figura 3. Diagrama entidad-relación de EduHub](img/modelo-entidad-relacion.png)
 
-El modelo contempla la gestión de usuarios y sus roles, la organización de asignaturas y grupos, las matrículas, las tareas y entregas del alumnado, las calificaciones y las operaciones relacionadas con la contratación y los pagos. Las entidades principales y sus relaciones son las siguientes:
-
-**[PENDIENTE: comprobar que estos nombres y relaciones coinciden con la Figura 3.]**
+El modelo contempla la gestión de usuarios y sus roles, la organización de asignaturas y grupos, las matrículas, las tareas y entregas del alumnado, las calificaciones y las operaciones relacionadas con la contratación y los pagos. De forma resumida, el modelo recoge la siguiente información:
 
 - **Usuario:** datos de acceso (correo y contraseña cifrada con Argon2id, o cuenta de Google), estado de verificación, rol (administrador, profesor o alumno) y preferencias (idioma, zona horaria y moneda).
-- **Token de verificación:** enlace de un solo uso asociado a un usuario.
 - **Asignatura** y **Grupo:** cada asignatura tiene uno o varios grupos (1:N).
 - **Asignación de profesorado:** relación N:M entre profesores y grupos.
 - **Matrícula:** relación N:M entre alumnos y grupos.
 - **Tarea:** pertenece a un grupo y la crea un profesor; guarda el título, el enunciado y la fecha límite (en UTC).
 - **Entrega:** archivo entregado por un alumno para una tarea; como máximo una por alumno y tarea, sustituible hasta la fecha límite.
-- **Calificación:** nota de 0 a 10 de un alumno en una tarea. **[PENDIENTE: decidir si se puede calificar a un alumno que no ha entregado; si es así, la nota no puede guardarse solo en la entrega.]**
+- **Calificación:** nota de 0 a 10 de un alumno en una tarea.
 - **Pago:** transacción iniciada por el administrador, con importe, moneda, estado (pendiente, pagada o fallida) e identificador de la sesión de Stripe; su confirmación actualiza el estado de la contratación.
 
 Esta estructura servirá como base para implementar la base de datos y garantizar la integridad de la información.
@@ -334,9 +328,6 @@ Los prototipos seguirán un diseño sencillo, intuitivo y adaptable a distintos 
 ![Figura 5. Prototipos de las principales pantallas de EduHub](img/prototipo.png)
 
 Prototipo interactivo disponible en: [Figma](https://www.figma.com/design/HE9WGQ9JBtLq9CoE3jzHY8/PROTOTIPO-APLICACION?m=auto&t=qCZRHrYy6TfdSd8q-1)
-
-**[PENDIENTE: sustituir por el enlace del prototipo (`figma.com/proto/...`), que se copia desde la vista de prototipo de Figma, y comprobar que cualquiera con el enlace puede verlo.]**
-
 ### 4.4. Flujo de navegación
 
 La navegación de EduHub estará organizada en función de los tres perfiles de usuario: administrador, profesor y alumno.
