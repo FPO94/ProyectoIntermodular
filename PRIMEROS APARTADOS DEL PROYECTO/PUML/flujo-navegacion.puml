@@ -1,0 +1,62 @@
+@startuml flujo-navegacion
+' EduHub - Figura 6. Flujo de navegación
+skinparam ActivityBackgroundColor #FFFDF5
+skinparam ActivityBorderColor #2E5E4E
+
+start
+:Pantalla de acceso;
+
+if (¿Tiene cuenta?) then (no)
+  :Registro (correo, contraseña y CAPTCHA);
+  :Verificar correo (enlace de un solo uso);
+endif
+
+:Iniciar sesión (correo y contraseña o Google);
+
+if (¿Credenciales válidas y correo verificado?) then (no)
+  :Mostrar error;
+  stop
+else (sí)
+endif
+
+:Panel principal según el rol;
+
+switch (Rol)
+case (Administrador)
+  split
+    :Usuarios y roles;
+  split again
+    :Asignaturas;
+  split again
+    :Grupos;
+    :Asignar profesores / matricular alumnos;
+  split again
+    :Contratación y pagos;
+    :Ver importe (EUR + moneda preferida);
+    :Pagar con Stripe Checkout;
+    :Resultado del pago y estado de transacciones;
+  end split
+case (Profesor)
+  :Mis grupos;
+  :Tareas del grupo;
+  split
+    :Crear tarea;
+  split again
+    :Entregas de la tarea\n(entregado / pendiente);
+    :Descargar trabajos;
+    :Calificar (0 - 10);
+  end split
+case (Alumno)
+  split
+    :Mis tareas\n(pendientes y entregadas);
+    :Detalle de la tarea;
+    :Entregar o sustituir archivo\n(antes de la fecha límite);
+  split again
+    :Mis calificaciones;
+  end split
+endswitch
+
+:Perfil (idioma, zona horaria y moneda)\naccesible desde el menú en cualquier momento;
+:Cerrar sesión;
+stop
+@enduml

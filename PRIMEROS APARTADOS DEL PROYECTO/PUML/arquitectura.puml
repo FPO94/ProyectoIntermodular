@@ -1,0 +1,62 @@
+@startuml arquitectura
+' EduHub - Figura 4. Arquitectura del sistema
+skinparam componentStyle rectangle
+skinparam defaultTextAlignment center
+left to right direction
+
+actor "Usuario\n(admin / profesor / alumno)" as user
+
+node "Navegador" as browser {
+  component "Frontend SPA\nAngular + TypeScript\nTailwind CSS · Transloco (es/en)" as spa
+  component "Interceptor HTTP\n(Authorization: Bearer JWT)" as interceptor
+  component "Guards de rutas\n(estado y rol)" as guards
+}
+
+node "Servidor" as server {
+  component "Nginx\n(sirve Angular y hace\nproxy inverso de /api)" as nginx
+
+  node "Backend NestJS · API REST (:3000)" as backend {
+    component "Auth\n(Passport JWT, Google,\nArgon2id, Turnstile)" as auth
+    component "Usuarios y roles" as users
+    component "Organización académica\n(asignaturas, grupos,\nprofesores, matrículas)" as academic
+    component "Tareas, entregas\ny calificaciones" as tasks
+    component "Contratación, divisas\ny pagos" as payments
+    component "Correo\n(Nodemailer)" as mail
+    component "Prisma ORM" as prisma
+  }
+
+  database "PostgreSQL" as db
+  storage "Archivos de entregas\n(disco local o AWS S3)" as files
+}
+
+cloud "Servicios externos" as external {
+  component "Google Identity\n(OAuth 2.0 / OIDC)" as google
+  component "Cloudflare Turnstile\n(CAPTCHA)" as turnstile
+  component "Stripe Checkout\n(modo pruebas)" as stripe
+  component "Frankfurter\n(tipos de cambio BCE)" as frankfurter
+  component "Servidor SMTP\n(Mailpit en desarrollo)" as smtp
+}
+
+user --> spa
+spa --> interceptor
+spa --> guards
+interceptor --> nginx : HTTPS · JSON
+nginx --> backend : /api
+
+auth --> prisma
+users --> prisma
+academic --> prisma
+tasks --> prisma
+payments --> prisma
+prisma --> db
+
+tasks --> files
+auth --> google
+auth --> turnstile
+auth --> mail
+payments --> stripe : crea sesión de pago
+stripe --> payments : webhook (confirmación)
+payments --> frankfurter : caché diaria
+payments --> mail
+mail --> smtp
+@enduml
